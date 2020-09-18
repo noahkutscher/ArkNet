@@ -6,10 +6,19 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #ifdef BUILD_LIB
-#define SF_EXPORT _declspec(dllexport)
+#define ARKNET_EXPORT _declspec(dllexport)
 #else
-#define SF_EXPORT _declspec(dllimport)
+#define ARKNET_EXPORT _declspec(dllimport)
 #endif
+
+#define ARKNET_ERROR(x) { printf("[ERROR] %s:%d - %s\n", __FILE__, __LINE__, x); }
+
+#ifdef ARKNET_DEBUG
+#define ARKNET_ASSERT(x, y) { if(!(x)) { ARKNET_ERROR(y) __debugbreak(); } } 
+#else
+#define ARKNET_ASSERT(x, y)
+#endif
+
 namespace AN {
-	SF_EXPORT void TestFunctionality(const char* test);
+	ARKNET_EXPORT void TestFunctionality(const char* test);
 }

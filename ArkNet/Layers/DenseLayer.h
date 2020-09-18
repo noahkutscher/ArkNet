@@ -14,13 +14,14 @@ namespace AN {
 		int m_inputs;
 		int m_outputs;
 		Mat m_weights;
+		Mat m_bias;
 		Mat m_outBuffer;
 
 		DenseLayer(size_t num_inputs, size_t num_outputs);
 
-		void test();
-		void forward(Mat& input);
 		void activate();
+		void forward(Mat& input);
+		void backprob();
 		void setActivation(ActivationFunc actFunc);
 
 	private:

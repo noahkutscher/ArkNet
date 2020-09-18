@@ -1,6 +1,11 @@
 workspace "ArkNet"
 	location "build"
+	platforms { "Win64" }
 	configurations { "Debug", "Release" }
+	
+	filter { "platforms:Win64" }
+		system "Windows"
+		architecture "x86_64"
 	
 project "ArkNet"
 	kind "SharedLib"
@@ -21,7 +26,7 @@ project "ArkNet"
 	defines { "BUILD_LIB" }
 	
 	filter "configurations:Debug"
-		defines { "SF_DEBUG" }
+		defines { "ARKNET_DEBUG" }
 		symbols "On"
 
 	filter "configurations:Release"
@@ -52,7 +57,7 @@ project "TestSF"
 	}
 	
 	filter "configurations:Debug"
-		defines { "SF_DEBUG" }
+		defines { "ARKNET_DEBUG" }
 		symbols "On"
 
 

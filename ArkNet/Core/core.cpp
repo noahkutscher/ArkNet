@@ -16,7 +16,7 @@ namespace AN {
 		std::shared_ptr<DenseLayer> layer2 = std::make_shared<DenseLayer>(4,2);
 
 		layer1->setActivation(AN::ActivationFunc::RELU);
-		layer1->setActivation(AN::ActivationFunc::SIGMOID);
+		layer2->setActivation(AN::ActivationFunc::SIGMOID);
 
 		net.addLayer(layer1);
 		net.addLayer(layer2);
