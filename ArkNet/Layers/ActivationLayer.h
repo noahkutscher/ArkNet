@@ -5,7 +5,7 @@
 namespace AN {
 
 	enum class ActivationFunc {
-		NONE = 0, SIGMOID, RELU
+		NONE = 0, SIGMOID, RELU, SOFTMAX
 	};
 
 	class ActivationLayer : public Layer {
