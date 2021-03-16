@@ -46,7 +46,6 @@ namespace AN {
 	Mat DenseLayer::update(Mat& error, double lr)
 	{
 		Mat grad;
-
 		m_outBuffer.mul_elem(error, grad);
 
 		Mat delta_weights = (grad * Mat::transpose(m_inputBuffer)) * lr;

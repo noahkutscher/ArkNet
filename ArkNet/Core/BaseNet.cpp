@@ -39,30 +39,30 @@ namespace AN {
 	{
 		
 		ARKNET_ASSERT(inputs.size() == labels.size(), "number of inputs and outputs doesnt match");
+
 		Mat pred;
 		Mat error;
 		Mat sq_error;
 		Mat deriv_error;
+
 		for (int e = 0; e < numEpochs; e++) {
+			double mse = 0.0;
 			for (int i = 0; i < inputs.size(); i++) {
 				predict(inputs[i], pred);
 
 				error = (labels[i] - pred);
 				error.mul_elem(error, sq_error);
-				double mse = Mat::sum(sq_error) / sq_error.size();
+				mse += Mat::sum(sq_error) / sq_error.size();
 
 				deriv_error = error * 2;
-				printf("Error: %f\n", mse);
 				//error.log();
 
 				for (int layer_idx = m_numLayers - 1; layer_idx >= 0; layer_idx--) {
 					deriv_error = m_layers[layer_idx]->update(deriv_error, m_learningRate);
 				}
-
-
-				//printf("\nPrediction: \n");
-				//pred.log();
 			}
+			mse /= inputs.size();
+			printf("Mean Square Error: %f\n", mse);
 		}
 
 

@@ -29,7 +29,7 @@ namespace AN {
 			}
 			break;
 		default:
-			break;
+			ARKNET_ASSERT(false, "Prediction for given Activation function not implemented");
 		}
 	}
 
