@@ -18,7 +18,3 @@
 #else
 #define ARKNET_ASSERT(x, y)
 #endif
-
-namespace AN {
-	ARKNET_EXPORT void TestFunctionality(const char* test);
-}

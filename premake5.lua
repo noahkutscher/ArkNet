@@ -34,16 +34,16 @@ project "ArkNet"
 	
 	filter ""
 
-project "TestSF"
+project "TestAN"
 	kind "ConsoleApp"
 	targetdir "build/bin/%{cfg.buildcfg}"
-	objdir "build/obj/TestSF/%{cfg.buildcfg}"
+	objdir "build/obj/TestAN/%{cfg.buildcfg}"
 	language "C++"
 	files{
-		"test_sf/*.h",
-		"test_sf/*.cpp",
-		"test_sf/*/*.h",
-		"test_sf/*/*.cpp"
+		"TestAN/*.h",
+		"TestAN/*.cpp",
+		"TestAN/*/*.h",
+		"TestAN/*/*.cpp"
 	}
 	
 	includedirs {
