@@ -10,14 +10,15 @@ namespace AN {
 
 	class ActivationLayer : public Layer {
 
+	private:
+		ActivationFunc m_actFunc = ActivationFunc::NONE;
+
 	public:
-		static std::shared_ptr<ActivationLayer> create(size_t num_inputs, ActivationFunc type);
+		ARKNET_EXPORT static std::shared_ptr<ActivationLayer> create(size_t num_inputs, ActivationFunc type);
 
 	public:
 		ActivationLayer(size_t num_inputs, ActivationFunc type);
 		void forward(Mat& input) override;
 		Mat update(Mat& error, double lr) override;
-	private:
-		ActivationFunc m_actFunc = ActivationFunc::NONE;
 	};
 }

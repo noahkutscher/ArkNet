@@ -4,8 +4,8 @@ namespace AN {
 	class Layer {
 
 	public:
-		int m_inputs = 0;
-		int m_outputs = 0;
+		size_t m_inputs = 0;
+		size_t m_outputs = 0;
 		Mat m_inputBuffer;
 		Mat m_outBuffer;
 
