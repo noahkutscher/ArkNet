@@ -21,7 +21,7 @@ int main() {
 	AN::NeuralNet net(0.01);
 
 	net.addLayer(AN::DenseLayer::create(4, 5));
-	net.addLayer(AN::ActivationLayer::create(5, AN::ActivationFunc::RELU));
+	net.addLayer(AN::ActivationLayer::create(5, AN::ActivationFunc::SIGMOID));
 	net.addLayer(AN::DenseLayer::create(5, 3));
 	net.addLayer(AN::ActivationLayer::create(3, AN::ActivationFunc::SIGMOID));
 

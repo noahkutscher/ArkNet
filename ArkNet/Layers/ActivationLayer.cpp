@@ -28,6 +28,24 @@ namespace AN {
 				m_outBuffer.at(i) = input.at(i) < 0 ? 0 : input.at(i);
 			}
 			break;
+		case ActivationFunc::LEAKY_RELU:
+			for (int i = 0; i < m_outputs; i++) {
+				m_outBuffer.at(i) = input.at(i) < 0 ? input.at(i) * 0.01 : input.at(i);
+			}
+			break;
+		case ActivationFunc::SOFTMAX:
+		{
+			// IMPLEMENTATION EQUATIONS: https://slaystudy.com/implementation-of-softmax-activation-function-in-c-c/
+			double sum = 0;
+			for (int i = 0; i < m_outputs; i++) {
+				sum += std::exp(input.at(i));
+			}
+
+			for (int i = 0; i < m_outputs; i++) {
+				m_outBuffer.at(i) = std::exp(input.at(i)) / sum;
+			}
+		}
+			break;
 		default:
 			ARKNET_ASSERT(false, "Prediction for given Activation function not implemented");
 		}
@@ -42,8 +60,19 @@ namespace AN {
 				m_inputBuffer.at(i) = sigmoid_deriv(m_inputBuffer.at(i));
 			break;
 		case ActivationFunc::RELU:
-			for (int i = 0; i < m_outputs; i++) {
+			for (int i = 0; i < m_inputs; i++) {
 				m_inputBuffer.at(i) = m_inputBuffer.at(i) < 0 ? 0 : 1;
+			}
+			break;
+		case ActivationFunc::LEAKY_RELU:
+			for (int i = 0; i < m_inputs; i++) {
+				m_inputBuffer.at(i) = m_inputBuffer.at(i) < 0.01 ? 0 : 1;
+			}
+			break;
+		case ActivationFunc::SOFTMAX:
+			// IMPLEMENTATION EQUATIONS: https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/
+			for (int i = 0; i < m_inputs; i++) {
+				m_inputBuffer.at(i) = m_inputBuffer.at(i) * (1.0 - m_inputBuffer.at(i));
 			}
 			break;
 		default:

@@ -15,6 +15,7 @@ namespace AN {
 		ARKNET_EXPORT static Mat abs(Mat& src1);
 		ARKNET_EXPORT static double sum(Mat& src);
 		ARKNET_EXPORT static Mat transpose(Mat& src);
+		ARKNET_EXPORT static Mat log(Mat& src);
 	
 	private:
 		size_t m_rows;
@@ -46,6 +47,8 @@ namespace AN {
 		ARKNET_EXPORT inline size_t rows() const { return m_rows; }
 		ARKNET_EXPORT inline size_t cols() const { return m_cols; }
 		ARKNET_EXPORT inline size_t size() const { return (m_cols * m_rows); }
+
+		ARKNET_EXPORT inline double max();
 		
 		ARKNET_EXPORT inline double& at(size_t row, size_t col) const {
 			ARKNET_ASSERT(row < m_rows&& col < m_cols, "tried to get an item out of range!");

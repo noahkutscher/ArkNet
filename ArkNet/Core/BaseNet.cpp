@@ -49,13 +49,13 @@ namespace AN {
 			double mse = 0.0;
 			for (int i = 0; i < inputs.size(); i++) {
 				predict(inputs[i], pred);
-
 				error = (labels[i] - pred);
 				error.mul_elem(error, sq_error);
 				mse += Mat::sum(sq_error) / sq_error.size();
 
+				//epoch_ce += Mat::sum(labels[i] * -1 * Mat::log(pred));
+
 				deriv_error = error * 2;
-				//error.log();
 
 				for (int layer_idx = m_numLayers - 1; layer_idx >= 0; layer_idx--) {
 					deriv_error = m_layers[layer_idx]->update(deriv_error, m_learningRate);

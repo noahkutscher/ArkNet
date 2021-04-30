@@ -1,11 +1,13 @@
 #pragma once
+#include <cmath>
+
 #include "Layers/Layer.h"
 #include "Math/Mat.h"
 #include "Math/ArkMath.h"
 namespace AN {
 
 	enum class ActivationFunc {
-		NONE = 0, SIGMOID, RELU, SOFTMAX
+		NONE = 0, SIGMOID, RELU, SOFTMAX, LEAKY_RELU
 	};
 
 	class ActivationLayer : public Layer {

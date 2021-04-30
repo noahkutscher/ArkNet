@@ -64,6 +64,16 @@ namespace AN {
 		return out;
 	}
 
+	ARKNET_EXPORT Mat Mat::log(Mat& src)
+	{
+		Mat out;
+		out.resize(src.cols(), src.rows());
+		for (size_t i = 0; i < src.size(); i++) {
+			out.at(i) = std::log(src.at(i));
+		}
+		return out;
+	}
+
 
 	Mat::Mat() {
 		m_rows = 0;
@@ -147,6 +157,18 @@ namespace AN {
 		Mat out;
 		mul(scalar, out);
 		return out;
+	}
+
+	ARKNET_EXPORT double Mat::max()
+	{
+		double max_out = 0;
+		for (size_t i = 0; i < m_rows; i++) {
+			for (size_t j = 0; j < m_cols; j++) {
+				if(at(i, j) > max_out)
+					max_out = at(i, j);
+			}
+		}
+		return max_out;
 	}
 
 	Mat Mat::operator+(Mat& src) const
