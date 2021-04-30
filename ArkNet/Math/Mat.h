@@ -2,6 +2,7 @@
 #include <cmath>
 #include <memory>
 #include <iostream>
+#include <cstring>
 
 #include "Core/core.h"
 

@@ -1,10 +1,15 @@
 workspace "ArkNet"
 	location "build"
-	platforms { "Win64" }
+	platforms { "Win64", "Linux64" }
 	configurations { "Debug", "Release" }
 	
 	filter { "platforms:Win64" }
 		system "Windows"
+		architecture "x86_64"
+
+	
+	filter { "platforms:Linux64" }
+		system "linux"
 		architecture "x86_64"
 	
 project "ArkNet"
@@ -24,6 +29,12 @@ project "ArkNet"
 	}
 	
 	defines { "BUILD_LIB" }
+
+	filter "platforms:Linux64"
+		defines {"SYSTEM_LINUX"}
+	
+	filter "platforms:Win64"
+		defines {"SYSTEM_WIN"}
 	
 	filter "configurations:Debug"
 		defines { "ARKNET_DEBUG" }

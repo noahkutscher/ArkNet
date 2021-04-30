@@ -48,7 +48,8 @@ namespace AN {
 		Mat grad;
 		m_outBuffer.mul_elem(error, grad);
 
-		Mat delta_weights = (grad * Mat::transpose(m_inputBuffer)) * lr;
+		Mat transposed = Mat::transpose(m_inputBuffer);
+		Mat delta_weights = (grad * transposed) * lr;
 		m_weights = m_weights + delta_weights;
 
 		//printf("------------\n");

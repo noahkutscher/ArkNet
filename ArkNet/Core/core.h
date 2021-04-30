@@ -6,15 +6,27 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #ifdef BUILD_LIB
-#define ARKNET_EXPORT _declspec(dllexport)
+    #ifdef SYSTEM_WIN
+        #define ARKNET_EXPORT _declspec(dllexport)
+    #else
+        #define ARKNET_EXPORT __attribute__((visibility("default")))
+    #endif
 #else
-#define ARKNET_EXPORT _declspec(dllimport)
+    #ifdef SYSTEM_WIN
+        #define ARKNET_EXPORT _declspec(dllimport)
+    #else
+        #define ARKNET_EXPORT
+    #endif
 #endif
 
 #define ARKNET_ERROR(x) { printf("[ERROR] %s:%d - %s\n", __FILE__, __LINE__, x); }
 
 #ifdef ARKNET_DEBUG
-#define ARKNET_ASSERT(x, y) { if(!(x)) { ARKNET_ERROR(y) __debugbreak(); } } 
+    #ifdef SYSTEM_WIN
+        #define ARKNET_ASSERT(x, y) { if(!(x)) { ARKNET_ERROR(y) __debugbreak(); } } 
+    #else
+        #define ARKNET_ASSERT(x, y) { if(!(x)) ARKNET_ERROR(y) } 
+    #endif
 #else
 #define ARKNET_ASSERT(x, y)
 #endif
