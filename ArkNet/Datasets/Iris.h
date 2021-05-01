@@ -11,7 +11,7 @@ namespace AN {
 
 	void get_iris_data_classification(std::vector<Mat>& rand_samples, std::vector<Mat>& rand_labels) {
 
-		std::ifstream infile("iris.csv");
+		std::ifstream infile("Resources/iris.csv");
 		std::string line;
 
 		std::vector<Mat> samples, labels;
@@ -63,7 +63,7 @@ namespace AN {
 
 	void get_iris_data_regression(std::vector<Mat>& rand_samples, std::vector<Mat>& rand_labels) {
 
-		std::ifstream infile("iris.csv");
+		std::ifstream infile("Resources/iris.csv");
 		std::string line;
 
 		std::vector<Mat> samples, labels;

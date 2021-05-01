@@ -1,0 +1,31 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build_debug",
+            "type":"cppbuild",
+            "command": "make",
+            "args": ["-C","${workspaceFolder}/build", "config=debug_linux64"]
+        },
+        {
+            "label": "build_release",
+            "type":"cppbuild",
+            "command": "make",
+            "args": ["-C", "${workspaceFolder}/build", "config=release_linux64"]
+        },
+        {
+            "label": "clean_debug",
+            "type":"cppbuild",
+            "command": "make",
+            "args": ["-C", "${workspaceFolder}/build", "config=debug_linux64", "clean"]
+        },
+        {
+            "label": "clean_release",
+            "type":"cppbuild",
+            "command": "make",
+            "args": ["-C", "${workspaceFolder}/build", "config=release_linux64", "clean"]
+        }
+    ]
+}
