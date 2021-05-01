@@ -1,5 +1,6 @@
 workspace "ArkNet"
 	location "build"
+	debugdir ""
 	platforms { "Win64", "Linux64" }
 	configurations { "Debug", "Release" }
 	
