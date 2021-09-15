@@ -12,10 +12,10 @@ namespace AN {
 		m_inputs = num_inputs;
 		m_outputs = num_outputs;
 
-		m_inputBuffer.realloc(m_inputs, 1);
-		m_outBuffer.realloc(m_outputs, 1);
-		m_bias.realloc(m_outputs, 1);
-		m_weights.realloc(m_outputs, m_inputs);
+		m_inputBuffer.realloc({1, 1, m_inputs, 1});
+		m_outBuffer.realloc({1, 1, m_inputs, 1});
+		m_bias.realloc({1, 1, m_inputs, 1});
+		m_weights.realloc({1, 1, m_outputs, m_inputs});
 		
 		double init_value;
 		for (int i = 0; i < m_weights.rows(); i++) {
@@ -53,7 +53,7 @@ namespace AN {
 		m_weights = m_weights + delta_weights;
 
 		//printf("------------\n");
-		//m_weights.log();
+		//m_weights.print();
 
 		return Mat::transpose(m_weights) * error;
 

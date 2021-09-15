@@ -29,7 +29,7 @@ namespace AN {
 	{
 		for (std::shared_ptr<Layer> l : m_layers) {
 			printf("--------\n");
-			l->m_outBuffer.log();
+			l->m_outBuffer.print();
 		}
 	}
 
@@ -51,7 +51,7 @@ namespace AN {
 				predict(inputs[i], pred);
 				error = (labels[i] - pred);
 				error.mul_elem(error, sq_error);
-				mse += Mat::sum(sq_error) / sq_error.size();
+				mse += Mat::sum(sq_error) / sq_error.elems();
 
 				//epoch_ce += Mat::sum(labels[i] * -1 * Mat::log(pred));
 

@@ -20,6 +20,7 @@
 #endif
 
 #define ARKNET_ERROR(x) { printf("[ERROR] %s:%d - %s\n", __FILE__, __LINE__, x); }
+#define ARKNET_INFO(x) { printf("[INFO] %s:%d - %s\n", __FILE__, __LINE__, x); }
 
 #ifdef ARKNET_DEBUG
     #ifdef SYSTEM_WIN
@@ -28,5 +29,5 @@
         #define ARKNET_ASSERT(x, y) { if(!(x)) ARKNET_ERROR(y) } 
     #endif
 #else
-#define ARKNET_ASSERT(x, y)
+    #define ARKNET_ASSERT(x, y)
 #endif

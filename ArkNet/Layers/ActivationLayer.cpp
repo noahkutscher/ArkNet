@@ -9,7 +9,7 @@ namespace AN {
 	ActivationLayer::ActivationLayer(size_t num_inputs, ActivationFunc type) {
 		m_inputs = num_inputs;
 		m_outputs = num_inputs;
-		m_outBuffer.realloc(num_inputs, 1);
+		m_outBuffer.realloc({1, 1, num_inputs, 1});
 		m_actFunc = type;
 	}
 
